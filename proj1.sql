@@ -19,31 +19,31 @@ DROP VIEW IF EXISTS q4v;
 -- Question 0
 CREATE VIEW q0(era)
 AS
-  SELECT 1 -- replace this line
+  select max(era) from pitching;
 ;
 
 -- Question 1i
 CREATE VIEW q1i(namefirst, namelast, birthyear)
 AS
-  SELECT 1, 1, 1 -- replace this line
+  select nameFirst, nameLast, birthYear from people where weight > 300;
 ;
 
 -- Question 1ii
 CREATE VIEW q1ii(namefirst, namelast, birthyear)
 AS
-  SELECT 1, 1, 1 -- replace this line
+  select nameFirst, nameLast, birthYear from people where nameFirst like '% %' order by namefirst, namelast asc;
 ;
 
 -- Question 1iii
 CREATE VIEW q1iii(birthyear, avgheight, count)
 AS
-  SELECT 1, 1, 1 -- replace this line
+  select birthyear, avg(height), count(*) from people group by birthyear order by birthyear asc;
 ;
 
 -- Question 1iv
 CREATE VIEW q1iv(birthyear, avgheight, count)
 AS
-  SELECT 1, 1, 1 -- replace this line
+  select birthyear, avg(height), count(*) from people group by birthyear having avg(height) > 70 order by birthyear asc;
 ;
 
 -- Question 2i
