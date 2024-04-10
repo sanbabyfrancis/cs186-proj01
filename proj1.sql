@@ -25,13 +25,13 @@ AS
 -- Question 1i
 CREATE VIEW q1i(namefirst, namelast, birthyear)
 AS
-  select nameFirst, nameLast, birthYear from people where weight > 300;
+  select namefirst, namelast, birthyear from people where weight > 300;
 ;
 
 -- Question 1ii
 CREATE VIEW q1ii(namefirst, namelast, birthyear)
 AS
-  select nameFirst, nameLast, birthYear from people where nameFirst like '% %' order by namefirst, namelast asc;
+  select namefirst, namelast, birthyear from people where namefirst like '% %' order by namefirst, namelast asc;
 ;
 
 -- Question 1iii
