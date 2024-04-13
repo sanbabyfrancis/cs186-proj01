@@ -49,7 +49,11 @@ AS
 -- Question 2i
 CREATE VIEW q2i(namefirst, namelast, playerid, yearid)
 AS
-  SELECT 1, 1, 1, 1 -- replace this line
+  select p.namefirst, p.namelast, p.playerid, hof.yearid from people p
+  inner join halloffame hof
+  on p.playerid = hof.playerid
+  where hof.inducted = 'Y'
+  order by hof.yearid desc, p.playerid asc;  
 ;
 
 -- Question 2ii
