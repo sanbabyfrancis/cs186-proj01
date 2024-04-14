@@ -59,13 +59,31 @@ AS
 -- Question 2ii
 CREATE VIEW q2ii(namefirst, namelast, playerid, schoolid, yearid)
 AS
-  SELECT 1, 1, 1, 1, 1 -- replace this line
+  select p.namefirst, p.namelast, p.playerid, s.schoolid, hof.yearid
+  from people p
+  inner join halloffame hof
+  on p.playerid = hof.playerid
+  inner join collegeplaying cp
+  on p.playerid = cp.playerid
+  inner join schools s
+  on cp.schoolid = s.schoolid
+  where hof.inducted = 'Y' and s.schoolstate = 'CA'
+  order by hof.yearid desc, s.schoolid, p.playerid asc;
 ;
 
 -- Question 2iii
 CREATE VIEW q2iii(playerid, namefirst, namelast, schoolid)
 AS
-  SELECT 1, 1, 1, 1 -- replace this line
+  select p.playerid, p.namefirst, p.namelast, s.schoolid
+  from people p
+  inner join halloffame hof
+  on p.playerid = hof.playerid
+  left outer join collegeplaying cp
+  on hof.playerid = cp.playerid
+  left outer join schools s
+  on cp.schoolid = s.schoolid
+  where hof.inducted = 'Y'
+  order by p.playerid desc, s.schoolid asc;
 ;
 
 -- Question 3i
